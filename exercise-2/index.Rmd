@@ -1,0 +1,28 @@
+--- 
+output: html_document
+---
+
+``` {r, message = FALSE, echo = FALSE}
+library(plotly)
+
+Cats <- c('Zola', 'Mochi', 'Nyan', 'Nala', 'Grumpy')
+Cuteness <- c(8.0, 7.5, 2.5, 9.5, 4.3)
+Chubbiness <- c(11, 12, 0, 9, 13)
+data <- data.frame(Cats, Cuteness, Chubbiness)
+
+plot_ly(data, x = ~Cuteness, y = ~Chubbiness, type = 'scatter',
+        mode = 'text', text = ~Cats, textposition = 'middle right',
+        textfont = list(color = '#000000', size = 16)) %>%
+  layout(title = 'Best Cats',
+         xaxis = list(title = 'Cutness Level (stars)',
+                      zeroline = TRUE,
+                      range = c(0, 10)),
+         yaxis = list(title = 'Chubbiness Level (lbs)',
+                      range = c(0,15)))
+
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+#chart_link = plotly_POST(p, filename="text/mode")
+
+
+```
